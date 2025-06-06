@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/TutorialParte1.unity
+    guid: f9a79c22d9db8e149b21aeb3653b623a
+  - enabled: 1
+    path: Assets/Scenes/TutorialPart2.unity
+    guid: e44d504efa0b14b448137598fd33ac42
+  - enabled: 1
+    path: Assets/Scenes/TutorialPart3 (Paula).unity
+    guid: 7678f7ef293d45f46b4a736f7ba63c86
+  - enabled: 1
+    path: Assets/Scenes/FranciscoIluminacion.unity
+    guid: 41395b04674bc9d46bae7ac7e9d78ad3
+  - enabled: 1
+    path: Assets/Scenes/Castle_Scene1_2.unity
+    guid: b22f2045c07bf094ca33e166a59e291c
+  - enabled: 0
+    path: Assets/Scenes/LVL2 TEST.unity
+    guid: 3fb88fee6c01eef4e9d0ecbf7982bdfc
+  - enabled: 0
+    path: Assets/Scenes/LastScenary.unity
+    guid: 05ec326f24477c2468dd2c88c4d1b8cb
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 85ea2a43146375e4bb4f316875ca9f1a
+  - enabled: 1
+    path: Assets/Scenes/GameOver 2.unity
+    guid: c4018b85b2cb1194e81eb01aa2578c9d
+  - enabled: 1
+    path: Assets/Scenes/Victory.unity
+    guid: 89d75913e81566a43b12786ef7282511
+  - enabled: 0
+    path: Assets/Scenes/Arte_Escenario 1.unity
+    guid: b7db44d137e45024784e4d70bc02de6a
+  - enabled: 0
+    path: Assets/Scenes/Test.unity
+    guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 0
+    path: Assets/Scenes/Arte_Escenario.unity
+    guid: 898f263fa0f3d634a908ce98b3acfb54
+  - enabled: 1
+    path: Assets/Scenes/Caves.unity
+    guid: 1f6eb28839127784ba0e81b6b55e048f
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_UseUCBPForAssetBundles: 0
