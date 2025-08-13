@@ -458,7 +458,7 @@ public partial class @IA_Game: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""3d509756-5653-4946-bc8a-502999af6ad8"",
-                    ""path"": ""<Mouse>/rightButton"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -524,7 +524,7 @@ public partial class @IA_Game: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""e4ee4fee-fa40-441f-baf3-094439434ac2"",
-                    ""path"": ""<Keyboard>/f"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";KeyboardMouse"",
