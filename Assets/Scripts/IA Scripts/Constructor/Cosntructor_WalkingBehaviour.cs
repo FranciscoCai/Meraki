@@ -80,7 +80,7 @@ public class Cosntructor_WalkingBehaviour : StateMachineBehaviour
             {
                 if (KO[i].collider.CompareTag("Dino"))
                 {
-                    animator.SetTrigger("ToKO"); // Cambiar al estado 'ToWalk'
+                    animator.SetTrigger("Idle"); // Cambiar al estado 'ToWalk'
                     break;
                 }
             }

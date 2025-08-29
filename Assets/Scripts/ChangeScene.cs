@@ -21,7 +21,10 @@ public class ChangeScene : MonoBehaviour
             transition.SetTrigger("Start");
 
             yield return new WaitForSeconds(1);
-
+            if(SpawnManager.Instance != null)
+            {
+                SpawnManager.Instance.ChangeSpawnCount(0);
+            }
             SceneManager.LoadScene(SceneToChange);
         }
         

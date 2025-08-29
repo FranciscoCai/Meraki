@@ -39,7 +39,7 @@ public class Constructor_RunBehaviour : StateMachineBehaviour
 
         // Guardar la velocidad original y establecer la nueva velocidad
         originalSpeed = agent.speed;
-        agent.speed = speedAgent;
+        agent.speed = originalSpeed;
 
         
     }
@@ -104,7 +104,7 @@ public class Constructor_RunBehaviour : StateMachineBehaviour
             {
                 if (KO[i].collider.CompareTag("Dino"))
                 {
-                    animator.SetTrigger("ToKO"); // Cambiar al estado 'ToKO'
+                    animator.SetTrigger("Idle"); // Cambiar al estado 'ToKO'
                     break;
                 }
             }

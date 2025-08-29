@@ -10,19 +10,20 @@ public class Win_Lose : MonoBehaviour
     {
         if (collision.gameObject == Wolf)
         {
-            Debug.Log("AAAAAAAAAAAA");
-            SceneManager.LoadScene(SceneToChange);
+            if(SpawnManager.Instance != null)
+            {
+                if(SpawnManager.Instance.SpawnCount<= 0)
+                {
+                    SceneManager.LoadScene(SceneToChange);
+                }
+                else
+                {
+                    SpawnManager.Instance.ActiveSpawn();
+                    GameManager.Instance.StopChangeTurn();
+                }
+            }
+
         }
     }
-    //private void OnTriggerStay(Collider collision)
-    //{
-    //    if (collision.gameObject == Goal)
-    //    {
-    //        SceneChangeContainer.Instance.SceneChangeToVictory();
-    //    }
-    //    if (collision.gameObject == Wolf)
-    //    {
-    //        SceneChangeContainer.Instance.SceneChangeToGameOver();
-    //    }
-    //}
+
 }

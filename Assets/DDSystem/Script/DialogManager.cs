@@ -80,6 +80,10 @@ namespace Doublsb.Dialog
         //Public Method
         //================================================
         #region Show & Hide
+        private void Start()
+        {
+
+        }
         public void Update()
         {
             if (passDialogAction != null && passDialogAction.action.WasPerformedThisFrame())

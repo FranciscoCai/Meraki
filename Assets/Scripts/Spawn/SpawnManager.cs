@@ -26,6 +26,10 @@ public class SpawnManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    private void Start()
+    {
+        ActiveSpawn();
+    }
 
     public void ChangeSpawnCount(int count)
     {
@@ -33,6 +37,9 @@ public class SpawnManager : MonoBehaviour
     }
     public void ActiveSpawn()
     {
-        OnSpawn?.Invoke(_spawnCount);
+        if (_spawnCount > 0)
+        {
+            OnSpawn?.Invoke(_spawnCount-1);
+        }
     }
 }

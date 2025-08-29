@@ -52,6 +52,8 @@ public class GameManager : MonoBehaviour
     public DinoEfect g_dinoEfect;
     public ConstructorEfect g_constructorEfect;
     public TurtleEfect g_turtleEfect;
+
+    private Coroutine changeTurnCoroutine;
     public static GameManager Instance { get; private set; }
 
 
@@ -102,9 +104,14 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
-        StartCoroutine(ResetChangeStateAfterDelay(2));
+        changeTurnCoroutine = StartCoroutine(ResetChangeStateAfterDelay(2));
     }
-
+    public void StopChangeTurn()
+    {
+        StopCoroutine(changeTurnCoroutine);
+        changeTurnCoroutine = null;
+        StopTurn();
+    }
     private void Update()
     {
         if (nivel1 && activateDialogScript.activateDialogByCode)

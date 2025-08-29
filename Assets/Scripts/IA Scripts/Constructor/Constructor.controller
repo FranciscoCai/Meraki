@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45798a0c10a403a429a5b1327d47aa06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedAgent: 4
+  speedAgent: 4.5
 --- !u!1101 &-7346568385451827136
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -203,7 +203,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: ToKO
+    m_ConditionEvent: ToKOww
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -5645826039285359783}
@@ -336,7 +336,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: ToKO
+  - m_Name: ToKOww
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
