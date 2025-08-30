@@ -3,6 +3,7 @@ using UnityEngine;
 public class DialogCameraManager : MonoBehaviour
 {
     public Animator cameraAnimator;
+    public bool enTutorial = true;
 
     public void SetCameraTrigger(string triggerName)
     {

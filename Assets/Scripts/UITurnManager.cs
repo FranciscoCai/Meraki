@@ -100,7 +100,7 @@ public class UITurnManager : MonoBehaviour
             onTurn[2].gameObject.SetActive(false);
 
             notOnTurn[2].gameObject.SetActive(true);
-            notOnTurn[2].transform.GetChild(0).GetComponent<Image>().sprite = Tortugas;
+            notOnTurn[2].transform.GetChild(0).GetComponent<Image>().sprite = Hefestin;
             notOnTurn[1].gameObject.SetActive(false);
             notOnTurn[0].gameObject.SetActive(false);
 
@@ -160,7 +160,7 @@ public class UITurnManager : MonoBehaviour
         }
         if (tutorial1 && onTurn.Length > 2 && notOnTurn.Length > 2)
         {
-            onTurn[0].transform.GetChild(0).GetComponent<Image>().sprite = Tortugas;
+            onTurn[0].transform.GetChild(0).GetComponent<Image>().sprite = Hefestin;
             onTurn[1].gameObject.SetActive(false);
             onTurn[2].gameObject.SetActive(false);
 
