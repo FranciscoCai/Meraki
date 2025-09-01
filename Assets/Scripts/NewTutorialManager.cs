@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.AI;
 
 public class NewTutorialManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class NewTutorialManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI tutorialText;
     [SerializeField] private GameObject wall;
     [SerializeField] private GameObject primerTurno;
+    [SerializeField] private GameObject segundoTurno;
 
     [Header("Sprites de turno a animar")]
     [SerializeField] private List<RectTransform> turnSprites;
@@ -52,15 +54,28 @@ public class NewTutorialManager : MonoBehaviour
     private string mensajePrimerTurnoMando =
         "Puedes mover los objetos de juguete disparándolos con R2";
 
+    [Header("Mensaje de segundo turno")]
+    [TextArea]
+    [SerializeField]
+    private List<string> mensajesSegundoTurno = new List<string>
+    {
+        "Una vez se ha movido el objeto no se podrá volver a utilizar hasta pasados unos turnos",
+        "Cuando un objeto esté en cooldown será de color rojo",
+    };
+
     private bool esperandoInput = false;
+    private bool primerMensaje = false;
     private Vector3 escalaObjetivo = Vector3.one;
     private int mensajeActual = 0;
 
     private Coroutine pulso0;
     private Coroutine pulso1;
 
+    public NavMeshAgent agent;
+
     private void Awake()
     {
+        agent.speed = 0f;
         foreach (var sprite in turnSprites)
         {
             if (sprite != null && !escalasOriginales.ContainsKey(sprite))
@@ -70,12 +85,14 @@ public class NewTutorialManager : MonoBehaviour
 
     private bool UsandoMando()
     {
-        // Si detecta algún mando conectado
+
         return Input.GetJoystickNames().Length > 0;
     }
 
     public void LanzarPrimerMensaje()
     {
+        agent.speed = 4f;
+
         mensajePanel.gameObject.SetActive(false);
 
         List<string> mensajes = UsandoMando() ? mensajesIntroMando : mensajesIntroTeclado;
@@ -96,8 +113,25 @@ public class NewTutorialManager : MonoBehaviour
         {
             if (wall != null)
                 wall.SetActive(false);
-
+           
+            if (primerTurno != null)
+                primerTurno.SetActive(false);
+      
             StartCoroutine(EsperarUnSegundoDos());
+        }
+        if (other.gameObject == segundoTurno)
+        {
+            if (segundoTurno != null)
+                segundoTurno.SetActive(false);
+
+            List<string> mensajesDos = mensajesSegundoTurno;
+
+            if (mensajeActual < mensajesDos.Count)
+            {
+                MostrarMensaje(mensajesDos[mensajeActual]);
+                mensajeActual++; 
+            }
+
         }
     }
 
@@ -109,7 +143,7 @@ public class NewTutorialManager : MonoBehaviour
         mensajePanel.localScale = Vector3.zero;
         Time.timeScale = 0f;
 
-        // animaciones de pulso
+        
         if (mensajeActual == 1)
         {
             IniciarPulso(turnSprites[0], ref pulso0);
@@ -127,6 +161,7 @@ public class NewTutorialManager : MonoBehaviour
         else if (mensajeActual == 4)
         {
             DetenerPulso(turnSprites[1], ref pulso1);
+            primerMensaje = true;
         }
 
         StartCoroutine(Escalar(mensajePanel, escalaObjetivo, 0.3f, () =>
@@ -145,7 +180,7 @@ public class NewTutorialManager : MonoBehaviour
 
             List<string> mensajes = UsandoMando() ? mensajesIntroMando : mensajesIntroTeclado;
 
-            if (mensajeActual < mensajes.Count - 1)
+            if (mensajeActual < mensajes.Count - 1 && !primerMensaje)
             {
                 mensajeActual++;
                 MostrarMensaje(mensajes[mensajeActual]);
@@ -164,11 +199,15 @@ public class NewTutorialManager : MonoBehaviour
         esperandoInput = false;
         yield return new WaitForSecondsRealtime(1f);
         esperandoInput = true;
+        
     }
 
     private IEnumerator EsperarUnSegundoDos()
     {
-        yield return new WaitForSecondsRealtime(3f);
+        yield return new WaitForSecondsRealtime(0.5f);
+
+        primerMensaje = true;
+        mensajeActual = 0;
 
         if (UsandoMando())
             MostrarMensaje(mensajePrimerTurnoMando);
@@ -193,7 +232,7 @@ public class NewTutorialManager : MonoBehaviour
         onComplete?.Invoke();
     }
 
-    // ------------ Animación de pulso individual ------------
+   
     private void IniciarPulso(RectTransform target, ref Coroutine rutina)
     {
         if (target == null) return;
