@@ -27,13 +27,25 @@ public class Data_Pintor : MonoBehaviour
     }
     private void OnEnable()
     {
+        if (SpawnManager.Instance != null)
+        {
+            SpawnManager.Instance.OnSpawn += PintorSpawnEfect;
+        }
         GameManager.OnPassTurn += PintorMoveEfect;
         GameManager.OnStopTurn += PintorStopEfect;
     }
     private void OnDisable()
     {
+        if (SpawnManager.Instance != null)
+        {
+            SpawnManager.Instance.OnSpawn -= PintorSpawnEfect;
+        }
         GameManager.OnPassTurn -= PintorMoveEfect;
         GameManager.OnStopTurn -= PintorStopEfect;
+    }
+    public void PintorSpawnEfect(int _spawnCount)
+    {
+        GameManager.Instance.SetPintorEfect(PintorEfect.Move);
     }
     private void PintorMoveEfect()
     {

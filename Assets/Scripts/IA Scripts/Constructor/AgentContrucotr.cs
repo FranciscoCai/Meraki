@@ -23,6 +23,10 @@ public class AgentContrucotr : MonoBehaviour
     }
     private void OnEnable()
     {
+        if (SpawnManager.Instance != null)
+        {
+            SpawnManager.Instance.OnSpawn += ConstructorSpawnEfect;
+        }
         GameManager.OnPassTurn += ConstructorMoveEfect;
         GameManager.OnStopTurn += ConstructorStopEfect;
     }
@@ -30,13 +34,22 @@ public class AgentContrucotr : MonoBehaviour
 
     private void OnDisable()
     {
+        if (SpawnManager.Instance != null)
+        {
+            SpawnManager.Instance.OnSpawn -= ConstructorSpawnEfect;
+        }
         GameManager.OnPassTurn -= ConstructorMoveEfect;
         GameManager.OnStopTurn -= ConstructorStopEfect;
+    }
+    public void ConstructorSpawnEfect(int _spawnCount)
+    {
+        GameManager.Instance.SetConstructorEfect(ConstructorEfect.Move);
+        ChangeConstructorOriginalColor();
     }
     private void ConstructorMoveEfect()
     {
         ConstructorEfect c_constructorEfect = GameManager.Instance.GetConstructorEfect();
-        Debug.Log(c_constructorEfect);
+
         if (c_constructorEfect == ConstructorEfect.TurtleWalk)
         {
             C_objectRenderer.material = C_initialMaterial;
@@ -65,6 +78,7 @@ public class AgentContrucotr : MonoBehaviour
     }
     private void ConstructorStopEfect()
     {
+        Debug.Log(1111);
         ConstructorEfect c_constructorEfect = GameManager.Instance.GetConstructorEfect();
         C_animator.SetTrigger("ToIdle");
         if (GameManager.Instance.GetConstructorEfect() != ConstructorEfect.Stun)
@@ -83,11 +97,11 @@ public class AgentContrucotr : MonoBehaviour
 
 
 
-    public void ChangeDinoStunColor()
+    public void ChangeConstructorStunColor()
     {
         C_objectRenderer.material = C_freezeMaterial;
     }
-    public void ChangeDinoOriginalColor()
+    public void ChangeConstructorOriginalColor()
     {
         C_objectRenderer.material = C_initialMaterial;
     }

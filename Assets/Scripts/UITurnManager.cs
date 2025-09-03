@@ -73,7 +73,6 @@ public class UITurnManager : MonoBehaviour
             notOnTurn[i] = notOnTurnObjects[i].GetComponent<Image>();
         }
 
-        Debug.Log("Turnos inicializados.");
     }
 
     void TurnoLucy()

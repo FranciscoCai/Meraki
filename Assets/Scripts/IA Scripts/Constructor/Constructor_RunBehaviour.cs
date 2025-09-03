@@ -104,7 +104,7 @@ public class Constructor_RunBehaviour : StateMachineBehaviour
             {
                 if (KO[i].collider.CompareTag("Dino"))
                 {
-                    animator.SetTrigger("Idle"); // Cambiar al estado 'ToKO'
+
                     break;
                 }
             }

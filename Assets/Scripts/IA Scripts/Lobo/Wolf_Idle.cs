@@ -14,6 +14,7 @@ public class Wolf_Idle : StateMachineBehaviour
         m_dataWolf = animator.GetComponent<DataWolf>();
         m_animator = m_dataWolf.D_animation;
         agent.isStopped = true;
+        agent.velocity = Vector3.zero;
     }
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {

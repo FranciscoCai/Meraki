@@ -42,4 +42,5 @@ public class SpawnManager : MonoBehaviour
             OnSpawn?.Invoke(_spawnCount-1);
         }
     }
+
 }

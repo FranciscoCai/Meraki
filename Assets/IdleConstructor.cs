@@ -12,6 +12,7 @@ public class IdleConstructor : StateMachineBehaviour
         {
             agent.isStopped = true;
         }
+        
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

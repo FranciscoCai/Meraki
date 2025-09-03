@@ -64,15 +64,28 @@ public class DataWolf : MonoBehaviour
 
     private void OnEnable()
     {
+        if (SpawnManager.Instance != null)
+        {
+            SpawnManager.Instance.OnSpawn += DinoSpawnEfect;
+        }
         GameManager.OnStartTurn += DinoStartEfect;
         GameManager.OnPassTurn += DinoMoveEfect;
         GameManager.OnStopTurn += DinoStopEfect;
     }
     private void OnDisable()
     {
+        if (SpawnManager.Instance != null)
+        {
+            SpawnManager.Instance.OnSpawn -= DinoSpawnEfect;
+        }
         GameManager.OnStartTurn -= DinoStartEfect;
         GameManager.OnPassTurn -= DinoMoveEfect;
         GameManager.OnStopTurn -= DinoStopEfect;
+    }
+    public void DinoSpawnEfect(int _spawnCount)
+    {
+        GameManager.Instance.SetDinoEfect(DinoEfect.Follow);
+        ChangeDinoOriginalColor();
     }
     public void ChangeDinoStunColor()
     {

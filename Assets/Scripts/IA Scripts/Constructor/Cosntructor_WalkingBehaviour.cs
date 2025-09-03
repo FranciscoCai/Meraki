@@ -65,7 +65,6 @@ public class Cosntructor_WalkingBehaviour : StateMachineBehaviour
             {
                 if (hit.CompareTag("Dino"))
                 {
-                    Debug.Log("Dino detectado a menos de 10 metros. Cambiando al estado ToRun.");
                     animator.SetBool("ToRun", true); // Cambia el estado a ToRun
                     return; // Salimos del método para evitar iteraciones innecesarias
                 }
