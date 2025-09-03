@@ -152,10 +152,6 @@ namespace StarterAssets
 
         [SerializeField] private bool _hasAnimator;
 
-        [SerializeField] private GameObject uiMovimientoNormalTeclado;
-        [SerializeField] private GameObject uiMovimientoObjetoTeclado;
-        [SerializeField] private GameObject uiMovimientoNormalMando;
-        [SerializeField] private GameObject uiMovimientoObjetoMando;
 
 
         private bool IsCurrentDeviceMouse
@@ -364,7 +360,6 @@ namespace StarterAssets
                 Move();
             }
 
-            ActualizarUIControles();
         }
 
 
@@ -381,31 +376,7 @@ namespace StarterAssets
             // Si hay algún mando conectado
             return Input.GetJoystickNames().Length > 0;
         }
-        private void ActualizarUIControles()
-        {
-            // Primero desactivamos todo
-            uiMovimientoNormalTeclado.SetActive(false);
-            uiMovimientoObjetoTeclado.SetActive(false);
-            uiMovimientoNormalMando.SetActive(false);
-            uiMovimientoObjetoMando.SetActive(false);
-
-            bool usandoMando = GamepadDetectado(); // <- función que detecta mando
-
-            if (_typeShoot == TypeShoot.Default)
-            {
-                if (usandoMando)
-                    uiMovimientoNormalMando.SetActive(true);
-                else
-                    uiMovimientoNormalTeclado.SetActive(true);
-            }
-            else if (_typeShoot == TypeShoot.ShootMoveObject)
-            {
-                if (usandoMando)
-                    uiMovimientoObjetoMando.SetActive(true);
-                else
-                    uiMovimientoObjetoTeclado.SetActive(true);
-            }
-        }
+     
 
         private void AssignAnimationIDs()
         {

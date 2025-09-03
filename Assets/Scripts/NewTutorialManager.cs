@@ -85,8 +85,15 @@ public class NewTutorialManager : MonoBehaviour
 
     private bool UsandoMando()
     {
+        var joysticks = Input.GetJoystickNames();
+        if (joysticks == null || joysticks.Length == 0)
+            return false;
 
-        return Input.GetJoystickNames().Length > 0;
+        foreach (var j in joysticks)
+            if (!string.IsNullOrEmpty(j))
+                return true;
+
+        return false;
     }
 
     public void LanzarPrimerMensaje()
