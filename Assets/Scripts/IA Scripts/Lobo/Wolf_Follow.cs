@@ -28,12 +28,12 @@ public class Wolf_Follow : StateMachineBehaviour
         if (ClosePointPosible())
         {
             GameManager.Instance.SetDinoEfect(DinoEfect.Howl);
+
+           
+            wolfText.Instance.MostrarMensaje("Si el dino no encuentra camnino por donde avanzar, aullará, paralizando al constructor y destruyendo los obstáculos a su alrededor");           
         }
+
         m_animator.speed = 0f;
-        //else if (m_agent.pathStatus == NavMeshPathStatus.PathPartial || m_agent.pathStatus == NavMeshPathStatus.PathInvalid)
-        //{
-        //    Debug.Log("El agente no puede alcanzar el destino por completo.");
-        //}
     }
     bool ClosePointPosible()
     {
