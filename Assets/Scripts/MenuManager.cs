@@ -6,15 +6,18 @@ using System.Collections;
 public class MenuManager : MonoBehaviour
 {
     [Header("Fade Settings")]
-    public Image fadeImage;         // Imagen blanca en Canvas
-    public float fadeDuration = 1f; // Duración del fade
-    public string sceneToLoad; // Nombre de la escena a cargar
+    public Image fadeImage;
+    public float fadeDuration = 1f;
+    public string sceneToLoad;
+
+    [Header("Audio Settings")]
+    public AudioSource audioSource;    
+    public AudioClip fadeSound;   
 
     private bool isFading = false;
 
     private void Start()
     {
-        // Asegura que el fade empieza transparente
         if (fadeImage != null)
         {
             Color c = fadeImage.color;
@@ -25,14 +28,12 @@ public class MenuManager : MonoBehaviour
 
     private void Update()
     {
-        // Detecta cualquier entrada (teclado, ratón, mando)
         if (!isFading && Input.anyKeyDown)
         {
             StartCoroutine(FadeAndLoad(sceneToLoad));
         }
     }
 
-    // También puedes llamar esto manualmente desde un botón UI si quieres
     public void LoadScene(string sceneName)
     {
         if (!isFading)
@@ -42,6 +43,12 @@ public class MenuManager : MonoBehaviour
     private IEnumerator FadeAndLoad(string sceneName)
     {
         isFading = true;
+
+       
+        if (audioSource != null && fadeSound != null)
+        {
+            audioSource.PlayOneShot(fadeSound);
+        }
 
         float t = 0f;
         while (t < fadeDuration)

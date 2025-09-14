@@ -152,7 +152,13 @@ namespace StarterAssets
 
         [SerializeField] private bool _hasAnimator;
 
+        [Header("Audio Settings")]
+        public AudioSource audioSource;
+        public AudioClip shootSound;
+        public AudioClip placeObject;
 
+        [SerializeField] private GameObject[] dialogObjects;
+        public bool dialogOn;
 
         private bool IsCurrentDeviceMouse
         {
@@ -360,6 +366,15 @@ namespace StarterAssets
                 Move();
             }
 
+            dialogOn = false;
+            foreach (var obj in dialogObjects)
+            {
+                if (obj.activeInHierarchy)
+                {
+                    dialogOn = true;
+                    break;
+                }
+            }
         }
 
 
@@ -427,8 +442,16 @@ namespace StarterAssets
         [SerializeField] private Renderer objectRenderer;
         private IEnumerator NormalShootEfect()
         {
+            if (_typeShoot != TypeShoot.ShootMoveObject)
+            {
+                if (audioSource != null && shootSound != null)
+                {
+                    audioSource.PlayOneShot(shootSound);
+                }
+            }
 
             yield return new WaitForNextFrameUnit();
+
             if (GameManager.Instance.joseMiguel == true)
             {
                 yield break;
@@ -608,7 +631,12 @@ namespace StarterAssets
             }
         }
         private void BeginNormalShot()
-        {
+        {         
+            if (dialogOn)
+            {
+                return;
+            }
+
             if (m_NormalShootRoutine != null)
             {
                 return;
@@ -1027,14 +1055,25 @@ namespace StarterAssets
         {
             _laserLine.enabled = false;
             laserVFX.SetActive(false);
+
             if (_copyOmogram != null && m_objectCollisionScript.m_isCollision == false)
             {
                 _boxCollider.enabled = true;
+
+                // Colocar el objeto en la nueva posición/rotación
                 _saveHitObject.transform.position = _copyOmogram.transform.position;
                 _saveHitObject.transform.rotation = _copyOmogram.transform.rotation;
+
+                // Reproducir sonido al colocar objeto
+                if (audioSource != null && placeObject != null)
+                {
+                    audioSource.PlayOneShot(placeObject);
+                }
+
                 GameManager.OnStartTurn += _saveHitObject.GetComponent<Cooldown>().MoveableObjectChange;
                 GameManager.Instance.ChangeTurn();
             }
+
             ShootStopEfect();
             _laserLine.enabled = false;
             laserVFX.SetActive(false);
