@@ -65,7 +65,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ScaleGrass: 15
-    - _Scale_Ground: 10
+    - _Scale_Ground: 5
     m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1
