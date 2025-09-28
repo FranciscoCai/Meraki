@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Button : MonoBehaviour
 {
+    
     [SerializeField] private GameObject[] wallMoveable;
     private void OnTriggerEnter(Collider other)
     {
@@ -11,6 +12,8 @@ public class Button : MonoBehaviour
             {
                 wallMoveable efectWall = wallMoveable[i].GetComponent<wallMoveable>();
                 efectWall.wallEnterEfect();
+
+               
             }
         }
     }
@@ -22,6 +25,7 @@ public class Button : MonoBehaviour
             {
                 wallMoveable efectWall = wallMoveable[i].GetComponent<wallMoveable>();
                 efectWall.wallExitEfect();
+                
             }
         }
     }

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class wallMoveable : MonoBehaviour
 {
-
+    public AudioSource audioSource;
+    public AudioClip mechanismClip;
     private Vector3 moveGizmoPosition;
     [SerializeField] private Transform moveTransform;
     [SerializeField] private Vector3 initialPosition;
@@ -12,13 +13,36 @@ public class wallMoveable : MonoBehaviour
 
     private bool isMove = false;
     private Coroutine moveToCorutine;
+
+    private static bool hasPlayedThisTurn = false;
+
+    private void changeTurnMove()
+    {
+        StartCoroutine(MoveTo(toMove));
+
+        if (!hasPlayedThisTurn)
+        {
+            audioSource.PlayOneShot(mechanismClip);
+            hasPlayedThisTurn = true;
+        }
+    }
+
+    // Cuando cambie el turno otra vez, reseteamos la bandera
     private void OnEnable()
     {
         GameManager.OnPassTurn += changeTurnMove;
+        GameManager.OnPassTurn += ResetFlag;
     }
+
     private void OnDisable()
     {
         GameManager.OnPassTurn -= changeTurnMove;
+        GameManager.OnPassTurn -= ResetFlag;
+    }
+
+    private void ResetFlag()
+    {
+        hasPlayedThisTurn = false;
     }
     private void Start()
     {
@@ -47,10 +71,7 @@ public class wallMoveable : MonoBehaviour
         toMove = initialPosition;
         //moveToCorutine = StartCoroutine(MoveTo(initialPosition));
     }
-    private void changeTurnMove()
-    {
-        StartCoroutine(MoveTo(toMove));
-    }
+
     private IEnumerator MoveTo(Vector3 movePosition)
     {
         while (Vector3.Distance(gameObject.transform.position, movePosition) > 0.01f)
