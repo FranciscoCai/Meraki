@@ -6041,10 +6041,6 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: ff40477c7fe76a74287778f021c3cd4c, type: 2}
-    - target: {fileID: 6984613223269225325, guid: 44ba2e4ae22145f418a49d6fb1c3e053, type: 3}
-      propertyPath: m_Avatar
-      value: 
-      objectReference: {fileID: 9000000, guid: 7aeb3123da2158a438fe3b2d0465fe29, type: 3}
     - target: {fileID: 7213363839971216169, guid: 44ba2e4ae22145f418a49d6fb1c3e053, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -9817,7 +9813,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: -76, y: 3.66, z: 1}
+  m_Size: {x: 76, y: 3.66, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &579199742
 Transform:

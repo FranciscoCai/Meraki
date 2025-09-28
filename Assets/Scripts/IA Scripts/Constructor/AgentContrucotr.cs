@@ -8,6 +8,7 @@ public class AgentContrucotr : MonoBehaviour
     public Transform[] waypoints;
     public int currentWaypointIndex;
     private Animator C_animator;
+    public Animator C_animatorAnimations;
     public ConstructorEfect c_ActualConstructorEfect;
 
 
@@ -16,10 +17,12 @@ public class AgentContrucotr : MonoBehaviour
     public Material C_initialMaterial;
 
     private int C_stunTimer = 0;
+    private NavMeshAgent agent;
 
     private void Start()
     {
         C_animator = GetComponent<Animator>();
+        agent = GetComponent<NavMeshAgent>();
     }
     private void OnEnable()
     {
@@ -75,10 +78,10 @@ public class AgentContrucotr : MonoBehaviour
                 C_stunTimer = 0;
             }
         }
+
     }
     private void ConstructorStopEfect()
     {
-        Debug.Log(1111);
         ConstructorEfect c_constructorEfect = GameManager.Instance.GetConstructorEfect();
         C_animator.SetTrigger("ToIdle");
         if (GameManager.Instance.GetConstructorEfect() != ConstructorEfect.Stun)
@@ -104,5 +107,12 @@ public class AgentContrucotr : MonoBehaviour
     public void ChangeConstructorOriginalColor()
     {
         C_objectRenderer.material = C_initialMaterial;
+    }
+    private void Update()
+    {
+        float speed = new Vector3(agent.velocity.x, 0, agent.velocity.z).magnitude;
+
+        // Asigna la velocidad al par¨¢metro del Animator
+        C_animatorAnimations.SetFloat("Speed", speed);
     }
 }

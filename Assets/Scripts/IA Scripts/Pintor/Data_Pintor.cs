@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Data_Pintor : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class Data_Pintor : MonoBehaviour
     [SerializeField] private Color P_originalColor;
     [SerializeField] private Color P_newColor = Color.blue;
     [SerializeField] private Animator P_animator;
+    public Animator P_animatorAnimations;
+
+    private NavMeshAgent agent;
 
     private int g_stunTimer = 0;
     private void Start()
@@ -16,6 +20,7 @@ public class Data_Pintor : MonoBehaviour
         P_objectRenderer = P_modelo.GetComponent<Renderer>();
         P_originalColor = P_objectRenderer.material.color;
         P_animator = gameObject.GetComponent<Animator>();
+        agent = GetComponent<NavMeshAgent>();
     }
     public void ChangePintorStunColor()
     {
@@ -77,5 +82,15 @@ public class Data_Pintor : MonoBehaviour
         {
             ChangePintorOriginalColor();
         }
+    }
+
+    void Update()
+    {
+        // Calcula la velocidad horizontal (sin contar la vertical)
+        float speed = new Vector3(agent.velocity.x, 0, agent.velocity.z).magnitude;
+
+        // Asigna la velocidad al par¨¢metro del Animator
+        P_animatorAnimations.SetFloat("Speed", speed);
+        Debug.Log(speed);
     }
 }

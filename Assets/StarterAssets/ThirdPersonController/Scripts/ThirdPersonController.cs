@@ -118,7 +118,6 @@ namespace StarterAssets
         private GameObject _mainCamera;
         [SerializeField] private bool cameraMove;
 
-        [SerializeField] private LineRenderer _laserLine;
         [SerializeField] private Transform _laserOrigin;
         [SerializeField] private Transform _laserTarget;
         public GameObject laserVFX;
@@ -457,7 +456,7 @@ namespace StarterAssets
                 yield break;
             }
 
-            _laserLine.enabled = true;
+
             laserVFX.SetActive(true);
 
             float shootObjectTime = 0;
@@ -472,7 +471,7 @@ namespace StarterAssets
                     float rotation = _targetRotation;
                     transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
 
-                    _laserLine.SetPosition(0, _laserOrigin.position);
+
                     Vector3 rayOrigin = _laserOrigin.transform.position;
 
                     laserVFX.transform.localScale = new Vector3(initialTransformLaser.x, initialTransformLaser.y, _maxCopyOmogramDistance);
@@ -608,7 +607,7 @@ namespace StarterAssets
                                 shootObject = null;
                             }
                         }
-                        _laserLine.SetPosition(1, hit.point);
+
                         laserVFX.transform.localScale = new Vector3(initialTransformLaser.x, initialTransformLaser.y, Vector3.Distance(laserVFX.transform.position, hit.point));
                     }
                     else
@@ -619,7 +618,7 @@ namespace StarterAssets
                             objectRenderer.material.color = Color.white;
                             shootObject = null;
                         }
-                        _laserLine.SetPosition(1, rayOrigin + (_laserOrigin.transform.forward * _maxCopyOmogramDistance));
+
                     }
 
                 }
@@ -658,7 +657,7 @@ namespace StarterAssets
                     objectRenderer.material.color = Color.white;
                     shootObject = null;
                 }
-                    _laserLine.enabled = false;
+
                 laserVFX.SetActive(false);
                 _animator.SetBool("OnShoot", false);
             }
@@ -1003,7 +1002,7 @@ namespace StarterAssets
                         _copyOmogram.transform.position = newPosition;
                             _copyOmogram.transform.rotation = Quaternion.Euler(0.0f, _pickObjectRotation + rotateGrade, 0.0f);
 
-                            _laserLine.SetPosition(1, newPosition);
+
                             laserVFX.transform.localScale = new Vector3(initialTransformLaser.x, initialTransformLaser.y, _copyOmogramDistance);
                     }
                     else
@@ -1013,7 +1012,7 @@ namespace StarterAssets
                             newPosition = new Vector3(hit.point.x, newPosition.y, hit.point.z);
                             _copyOmogramDistance = Vector3.Distance(newPosition, new Vector3(gameObject.transform.position.x, newPosition.y, gameObject.transform.position.z));
                             _copyOmogram.transform.position = newPosition;
-                            _laserLine.SetPosition(1, newPosition);
+
                             laserVFX.transform.localScale = new Vector3(initialTransformLaser.x, initialTransformLaser.y, _copyOmogramDistance);
                             _copyOmogram.transform.rotation = Quaternion.Euler(0.0f, _pickObjectRotation + rotateGrade, 0.0f);
                         }
@@ -1053,7 +1052,7 @@ namespace StarterAssets
         }
         private void CheckMovebleObjectEfect()
         {
-            _laserLine.enabled = false;
+
             laserVFX.SetActive(false);
 
             if (_copyOmogram != null && m_objectCollisionScript.m_isCollision == false)
@@ -1075,13 +1074,13 @@ namespace StarterAssets
             }
 
             ShootStopEfect();
-            _laserLine.enabled = false;
+
             laserVFX.SetActive(false);
             m_MovebleObjectShootRoutine = null;
         }
         private void CancelMovebleObjectEfect()
         {
-            _laserLine.enabled = false;
+
             laserVFX.SetActive(false);
             ShootStopEfect();
         }

@@ -8,11 +8,12 @@ public class Painter_Move : StateMachineBehaviour
     private Data_Pintor m_dataPintor;
     private bool isScared = false;
 
+    
+
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         agent = animator.GetComponent<UnityEngine.AI.NavMeshAgent>();
         m_dataPintor = animator.GetComponent<Data_Pintor>();
-
         agent.isStopped = false;
         agent.autoBraking = false;
 
