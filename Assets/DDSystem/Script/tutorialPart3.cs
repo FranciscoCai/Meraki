@@ -27,7 +27,7 @@ public class tutorialPart3 : MonoBehaviour
 
         dialogTexts.Add(new DialogData("/trigger:Animation/Tiene que haber alguna otra forma de pararle los pies/speed:down/...", "Lucy"));
 
-        dialogTexts.Add(new DialogData("A lo mejor las cajas esas... /size:up/(A y D para rotar)", "Lucy"));
+        dialogTexts.Add(new DialogData("A lo mejor las cajas esas... /size:up/", "Lucy"));
 
         dialogManager.Show(dialogTexts);
 

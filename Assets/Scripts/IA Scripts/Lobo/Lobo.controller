@@ -414,3 +414,5 @@ MonoBehaviour:
   movableObjectLayer:
     serializedVersion: 2
     m_Bits: 128
+  audioSource: {fileID: 0}
+  howlSound: {fileID: 8300000, guid: 11fcfdc15e423a84ba1e113bc1c45c38, type: 3}
