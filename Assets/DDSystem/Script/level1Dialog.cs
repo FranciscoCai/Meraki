@@ -27,19 +27,7 @@ public class level1Dialog : MonoBehaviour
 
         dialogTexts.Add(new DialogData("Ahora vendrá el /color:red/dino/color:white/.", "Painter"));
 
-        dialogTexts.Add(new DialogData("Ayúdame/speed:down/.../speed:init/ /size:down/por favor/speed:down/...", "Painter", () =>
-        {
-            cuadroBool = true;
-            cuadroSprite.SetActive(true);
-        }));
-
-        dialogTexts.Add(new DialogData("Tengo que pintar el cuadro, cumplir la profecía.", "Painter"));
-
-        dialogTexts.Add(new DialogData("Lo sé, y te voy a ayudar, no te preocupes.", "Lucy", () =>
-        {
-            cuadroBool = false;
-            cuadroSprite.SetActive(false);
-        }));
+        dialogTexts.Add(new DialogData("Ayúdame/speed:down/.../speed:init/ /size:down/por favor/speed:down/...", "Painter")); 
 
         dialogTexts.Add(new DialogData("/trigger:Animation//speed:down/...", "Lucy"));
 

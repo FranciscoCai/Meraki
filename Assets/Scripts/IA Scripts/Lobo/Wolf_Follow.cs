@@ -30,7 +30,7 @@ public class Wolf_Follow : StateMachineBehaviour
             GameManager.Instance.SetDinoEfect(DinoEfect.Howl);
 
            
-            wolfText.Instance.MostrarMensaje("Si el dino no encuentra camnino por donde avanzar, aullará, paralizando al constructor y destruyendo los obstáculos a su alrededor");           
+            wolfText.Instance.MostrarMensaje("Si el dino no encuentra camino por donde avanzar, rugirá, paralizando al constructor y destruyendo los obstáculos a su alrededor");           
         }
 
         m_animator.speed = 0f;
