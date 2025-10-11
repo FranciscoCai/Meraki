@@ -21,7 +21,7 @@ public class tutorialPart3 : MonoBehaviour
 
         dialogTexts.Add(new DialogData("¡Vamos/color:purple/ Lucy/color:white/! Ya casi llegamos al castillo.", "Constructor"));
       
-        dialogTexts.Add(new DialogData("Aunque el /color:red/dino/color:white/ nos pisa los talones, y ya no quedan /color:blue/tortugas/color:white/...", "Constructor"));
+        dialogTexts.Add(new DialogData("Aunque el /color:red/dino/color:white/ nos pisa los talones...", "Constructor"));
 
         dialogTexts.Add(new DialogData("¿Qué hacemos?", "Constructor"));
 
