@@ -20197,7 +20197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Goal: {fileID: 10480504}
-  SceneToChange: TutorialPart3 (Paula)
+  SceneToChange: NewTutorial2
   transition: {fileID: 48963248}
   audioSource: {fileID: 1370739532}
   winSound: {fileID: 8300000, guid: 047ba04190f5f74449cc17f2cb80a545, type: 3}
