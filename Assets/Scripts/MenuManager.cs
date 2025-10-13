@@ -60,7 +60,7 @@ public class MenuManager : MonoBehaviour
         // Desactivar el GameObject que reproduce el video
         if (videoPlayerGO != null)
         {
-            videoPlayerGO.SetActive(false);
+         //   videoPlayerGO.SetActive(false);
         }
     }
 
