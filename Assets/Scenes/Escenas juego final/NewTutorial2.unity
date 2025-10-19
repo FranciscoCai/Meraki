@@ -29810,7 +29810,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Goal: {fileID: 8146716}
-  SceneToChange: FranciscoIluminacion
+  SceneToChange: Castle_Scene1_1
   transition: {fileID: 1248414306}
   audioSource: {fileID: 852494259}
   winSound: {fileID: 8300000, guid: 047ba04190f5f74449cc17f2cb80a545, type: 3}
